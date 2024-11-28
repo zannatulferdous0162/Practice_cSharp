@@ -7,7 +7,7 @@
     <ProjectGuid>{2278329D-699D-4273-AAC8-849940E81582}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Input_Validation_and_loop_termination</RootNamespace>
-    <AssemblyName>Input_Validation_and_loop_termination</AssemblyName>
+    <AssemblyName>Input Validation and loop termination</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
