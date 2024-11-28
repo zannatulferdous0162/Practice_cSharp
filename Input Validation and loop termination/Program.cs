@@ -39,8 +39,9 @@ namespace Input_Validation_and_loop_termination
                 }
                 else
                 {
-                    //int square = CalculateSquare(number);
-                   // Console.WriteLine($"Square of {number}  = {square}");
+                    
+                    int square = CalculateSquare(number);
+                   Console.WriteLine($"Square of {number}  = {square}");
                 }
 
             }
