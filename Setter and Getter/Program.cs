@@ -11,7 +11,7 @@ namespace Setter_and_Getter
         public String name; // Readable and writeable
         private int age; //not readable and not writeable
 
-        public void SetAge(int a)//writeablw
+        public void SetAge(int a)//writeable
         {
             age = a;
         }
