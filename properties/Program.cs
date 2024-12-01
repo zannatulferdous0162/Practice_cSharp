@@ -12,10 +12,40 @@ namespace properties
         public string name;
         private int age;
 
+        //Auto implimented properties
+
+        //public string name
+        //{
+        //    get { return name;}
+        //    set { value = name;}
+        //}
+
+        //public int age
+        //{
+        //    get { return age; }
+        //    set { value = age; }    
+           
+        //}
+
+        //
+        public string Name
+        {
+            get { return name; }
+            set { if (value.Length >= 2)
+                {
+                    name = value;
+                }                   
+                }
+        }
+    
         public int Age
         {
             get { return age; }
-            set { age = value; }
+            set {if(value > 0)
+                {
+                    age = value;
+                }                
+                }
         }
     }
 
