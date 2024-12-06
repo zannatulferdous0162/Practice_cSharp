@@ -13,29 +13,23 @@ namespace Exception_Handling
             Console.WriteLine("Wecome to ta calculator APP");
             try
             {
-                Console.Write("Enter Number1 = ");
-                int number1 = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Enter Number2 = ");
-                int number2 = Convert.ToInt32(Console.ReadLine());
+
+                int num1 = ReadInputFromUser("num1");
+                int num2 = ReadInputFromUser("num2");
+
+
 
                 //custom exception
-                if(number2 > 10000)
+                if (num2 > 10000)
                 {
                     throw new ArgumentException("number 2 can not be greater than 1000");
                 }
 
-                double result = number1 / number2;
+                double result = num1 / num2;
                 Console.WriteLine($"Result = {result}");
                
             }
-            catch(OverflowException)
-            {
-                Console.WriteLine(" Value was either too large or too small for an Int32.");
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Please enter  a valid Number");
-            }
+            
             catch (DivideByZeroException)
             {
                 Console.WriteLine("Error! Can not divide by ZERO!!!");
@@ -53,6 +47,41 @@ namespace Exception_Handling
                 Console.Write("Goodbye!!");
             }
 
+        }
+        static int ReadInputFromUser(string promt)
+        {
+            while (true)
+            {
+                
+                try
+                {
+                    Console.Write($"Enter {promt} =  ");
+                    string input = Console.ReadLine() ?? "";
+                    if (string.IsNullOrEmpty(input))
+                    {
+                        //throw new ArgumentNullException("num1 can not be null or empty");option 1
+                        Console.WriteLine($"{promt} can not a nul expresstion"); //option  2
+                        continue;
+                    }
+                    return Convert.ToInt32(input);
+                }
+                catch (ArgumentNullException)
+                {
+                    Console.WriteLine("input can not be null or empity");
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine(" Value was either too large or too small for an Int32.");
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Please enter  a valid Number");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"{ e.Message}");
+                }
+            }
         }
     }
 }
