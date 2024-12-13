@@ -10,8 +10,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int a = 0;
-            int b = 0;
+            int a = 9;
+            int b = 6;
             try
             {
                 b = 100 / a;
