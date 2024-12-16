@@ -43,7 +43,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WFA Calculator", "WFA Calculator", "{E4874404-17C7-4457-8B0F-63F51D31F0D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculetor", "Calculetor\Calculetor.csproj", "{475CB7A6-9F7C-4764-8A78-BB970F785C6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator", "Calculetor\Calculator.csproj", "{475CB7A6-9F7C-4764-8A78-BB970F785C6E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Try Catch Finally", "Try Catch Finally", "{791331C9-508A-4B75-935C-5E12E3A396DE}"
 EndProject

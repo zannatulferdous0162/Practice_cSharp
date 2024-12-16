@@ -27,8 +27,22 @@ namespace Calculetor
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            int fo = int.Parse(textBoxFirstOperend.Text);
-            int so = int.Parse(textBoxSecondOperend.Text);
+            int fo, so;
+
+            // Input validation
+            if (!int.TryParse(textBoxFirstOperend.Text, out fo))
+            {
+                MessageBox.Show("Invalid input for First Operand. Please enter a valid number.");
+                return;
+            }
+
+            if (!int.TryParse(textBoxSecondOperend.Text, out so))
+            {
+                MessageBox.Show("Invalid input for Second Operand. Please enter a valid number.");
+                return;
+            }
+
+            // Calculation logic
             if (radBtnAdd.Checked)
             {
                 txtBoxExpression.Text = fo + " + " + so;
@@ -46,13 +60,27 @@ namespace Calculetor
             }
             else if (radBtnDiv.Checked)
             {
+                if (so == 0)
+                {
+                    MessageBox.Show("Division by zero is not allowed.");
+                    return;
+                }
                 txtBoxExpression.Text = fo + " / " + so;
-                txtBoxResult.Text = (fo / so).ToString();
+                txtBoxResult.Text = ((double)fo / so).ToString("F2");
             }
             else if (radBtnRem.Checked)
             {
+                if (so == 0)
+                {
+                    MessageBox.Show("Division by zero is not allowed.");
+                    return;
+                }
                 txtBoxExpression.Text = fo + " % " + so;
                 txtBoxResult.Text = (fo % so).ToString();
+            }
+            else
+            {
+                MessageBox.Show("Please select an operation.");
             }
         }
     }
