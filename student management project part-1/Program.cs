@@ -22,7 +22,14 @@ namespace student_management_project_part_1
         public DateTime DateOfBirth
         {
             get { return _dateOfBirth; }
-            set { _dateOfBirth = value; }
+            set
+            {
+                if (value > DateTime.Now)
+                {
+                    throw new ArgumentException("Date Time can not be future");
+                }
+                _dateOfBirth = value;
+            }
         }
 
         public string RollNo
@@ -32,7 +39,7 @@ namespace student_management_project_part_1
         }
 
         /*Constractor*/
-        public Student(string name,DateTime dateTime, string rollNo)
+        public Student(string name, DateTime dateTime, string rollNo)
         {
             Name = name;
             DateOfBirth = dateTime;
@@ -46,10 +53,23 @@ namespace student_management_project_part_1
 
 
 
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            try
+            {
+                Student student1 = new Student("Zannat", new DateTime(1990, 3, 30), "Diploma162");
+                Student student2 = new Student("Zannat Sheikh", new DateTime(2023, 3, 30), "Diploma163");
+
+                /*Display student detail*/
+                Console.WriteLine($"Show student details");
+                Console.WriteLine("___________________");
+                Console.WriteLine($"Name : {student1.Name},Date of Birth :{student1.DateOfBirth},Roll No : {student1.RollNo}");
+                Console.WriteLine("___________________");
+                Console.WriteLine($"Name : {student2.Name},Date of Birth :{student2.DateOfBirth},Roll No : {student2.RollNo}");
+            }
+           
         }
     }
 }
