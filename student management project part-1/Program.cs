@@ -9,49 +9,76 @@ namespace student_management_project_part_1
 
     public class Student
     {
-        private string _name;
-        private DateTime _dateOfBirth;
-        private string _rollNo;
 
         public string Name
         {
-            get { return _name; }
-            set { _name = value; }
+            get;
+            private set; //only constractor diye set kora jabe
         }
 
         public DateTime DateOfBirth
         {
-            get { return _dateOfBirth; }
-            set
-            {
-                if (value > DateTime.Now)
-                {
-                    throw new ArgumentException("Date Time can not be future");
-                }
-                _dateOfBirth = value;
-            }
+            get;
+            private set; //only constractor diye set kora jabe
         }
-
         public string RollNo
         {
-            get { return _rollNo; }
-            set { _rollNo = value; }
+            get;
+            private set; //only constractor diye set kora jabe
         }
 
         /*Constractor*/
-        public Student(string name, DateTime dateTime, string rollNo)
+        public Student(string name, DateTime dateOfBirth, string rollNo)
         {
+
+            validateInput(name,dateOfBirth,rollNo);
             Name = name;
-            DateOfBirth = dateTime;
+            DateOfBirth = dateOfBirth;
             RollNo = rollNo;
         }
+        /*Method*/
+        private static void validateInput(string name, DateTime dateOfBirth, string rollNo)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentException("Name can not be null or empty");
+            }
+            if (dateOfBirth > DateTime.Now)
+            {
+                throw new ArgumentException("Date Time can not be future");
+            }
+            if (string.IsNullOrEmpty(rollNo))
+            {
+                throw new ArgumentException("Roll Number can not be null or empty");
+            }
+            if (dateOfBirth == default)
+            {
+                throw new ArgumentException("Date Time can not be future");
+            }
+
+        }
+        /*Method*/
+        private int calculateAge()
+        {
+            int age = DateTime.Now.Year - DateOfBirth.Year;
+            return DateTime.Now < DateOfBirth.AddYears(age) ?
+            
+                //if the birthday has not occurred yet, decrement by the age 1
+                age-1 : age;
+            
+          
+        }
+        public void showStudentInfo()
+        {
+            Console.WriteLine($"Show student details");
+            Console.WriteLine("___________________");
+            Console.WriteLine($"Name : {Name},Date of Birth :{DateOfBirth.ToShortDateString()},Roll No : {RollNo},Age :{Age}");
+        }
+        //Property
+        public int Age => calculateAge(); //lamda expression
+        
 
     }
-
-
-
-
-
 
     public class Program
     {
@@ -63,13 +90,15 @@ namespace student_management_project_part_1
                 Student student2 = new Student("Zannat Sheikh", new DateTime(2023, 3, 30), "Diploma163");
 
                 /*Display student detail*/
-                Console.WriteLine($"Show student details");
+                student1.showStudentInfo();
                 Console.WriteLine("___________________");
-                Console.WriteLine($"Name : {student1.Name},Date of Birth :{student1.DateOfBirth},Roll No : {student1.RollNo}");
-                Console.WriteLine("___________________");
-                Console.WriteLine($"Name : {student2.Name},Date of Birth :{student2.DateOfBirth},Roll No : {student2.RollNo}");
+                student2.showStudentInfo();
             }
-           
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
     }
 }
